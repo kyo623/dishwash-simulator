@@ -4,6 +4,8 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
   background-color: #FFF9E6;
   font-family: 'Gaegu', cursive;
   cursor: url('assets_v2/sponge.svg') 30 30, auto;
@@ -48,6 +50,8 @@ body, html {
   pointer-events: none;
   animation: gentle-ripple 4s infinite alternate ease-in-out;
   overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 @keyframes gentle-ripple {
@@ -186,12 +190,14 @@ body, html {
 #popup-content.popup-pan { width: 500px; height: 700px; }
 #popup-content.popup-glass { width: 350px; height: 500px; }
 
-canvas {
+#scrub-canvas {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
+  cursor: url('assets_v2/sponge.svg'), crosshair;
   z-index: 10;
-  cursor: url('assets_v2/sponge.svg') 30 30, auto;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 #popup-base-dish {

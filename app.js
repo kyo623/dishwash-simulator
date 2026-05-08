@@ -141,7 +141,7 @@ function startDrawing(e) {
   ctx.lineTo(pos.x, pos.y);
   ctx.stroke();
   spawnScrubBubble(pos);
-  e.preventDefault();
+  if (e.cancelable) e.preventDefault();
 }
 
 function draw(e) {
@@ -151,12 +151,15 @@ function draw(e) {
   ctx.stroke();
   spawnScrubBubble(pos);
   checkClearProgress();
-  e.preventDefault();
+  if (e.cancelable) e.preventDefault();
 }
 
-function stopDrawing() {
+function stopDrawing(e) {
   isDrawing = false;
   ctx.closePath();
+  if (e && e.cancelable) {
+    e.preventDefault();
+  }
 }
 
 function spawnScrubBubble(pos) {
@@ -176,7 +179,7 @@ canvas.addEventListener('mouseleave', stopDrawing);
 
 canvas.addEventListener('touchstart', startDrawing, {passive: false});
 canvas.addEventListener('touchmove', draw, {passive: false});
-canvas.addEventListener('touchend', stopDrawing);
+canvas.addEventListener('touchend', stopDrawing, {passive: false});
 
 let lastCheck = 0;
 function checkClearProgress() {
