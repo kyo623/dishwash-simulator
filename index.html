@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퐁퐁! 싱크대 대작전</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="sink-bg"></div>
+    <div id="rack-bg"></div>
+    <div id="water-layer"></div>
+    <div id="sink-area"></div>
+    <div id="rack-area">
+      <img src="assets_v2/sponge.svg" id="sponge-prop" alt="Sponge" />
+    </div>
+  </div>
+
+  <div id="popup-overlay" class="hidden">
+    <div id="popup-content">
+      <div id="popup-base-dish"></div>
+      <canvas id="scrub-canvas"></canvas>
+    </div>
+  </div>
+
+  <div id="clear-message" class="hidden">
+    <h1>반짝반짝!</h1>
+    <p>설거지를 완벽하게 끝냈어요!</p>
+    <button onclick="location.reload()">다시 하기</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
