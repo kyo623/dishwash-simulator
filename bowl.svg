@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120">
-  <defs>
-    <filter id="scribble" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-    </filter>
-  </defs>
-  <g filter="url(#scribble)" stroke="#4A3B32" stroke-linecap="round" stroke-linejoin="round">
+  
+  <g stroke="#4A3B32" stroke-linecap="round" stroke-linejoin="round">
     <path d="M50,5 C78,3 98,22 95,50 C93,80 72,98 50,95 C22,93 2,75 5,50 C7,22 22,7 50,5 Z" fill="#FFF2B2" stroke-width="4" />
     <path d="M50,15 C68,13 82,25 84,50 C86,70 70,82 50,85 C30,88 16,70 15,50 C14,30 30,17 50,15 Z" fill="#FFE066" stroke-width="3"/>
     <circle cx="35" cy="45" r="4" fill="#4A3B32" stroke="none"/>
