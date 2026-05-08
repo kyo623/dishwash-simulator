@@ -274,3 +274,44 @@ body, html {
 #clear-message button:hover { 
   transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+  #sink-bg {
+    top: 2%; left: 5%; width: 90%; height: 70%;
+  }
+  #water-layer {
+    top: 5%; left: 8%; width: 84%; height: 64%;
+  }
+  #sink-area {
+    top: 5%; left: 8%; width: 84%; height: 64%;
+  }
+  #rack-bg {
+    top: 75%; left: 5%; width: 90%; height: 23%;
+  }
+  #rack-area {
+    top: 75%; left: 5%; width: 90%; height: 23%;
+  }
+  
+  .dish.type-bowl { width: 100px; height: 100px; }
+  .dish.type-mug { width: 100px; height: 100px; }
+  .dish.type-spoon { width: 45px; height: 120px; }
+  .dish.type-fork { width: 45px; height: 120px; }
+  .dish.type-plate { width: 120px; height: 120px; }
+  .dish.type-pan { width: 120px; height: 160px; }
+  .dish.type-glass { width: 80px; height: 100px; }
+
+  #popup-content.popup-bowl { max-width: 80vw; max-height: 80vw; }
+  #popup-content.popup-mug { max-width: 80vw; max-height: 80vw; }
+  #popup-content.popup-spoon { max-width: 30vw; max-height: 80vh; }
+  #popup-content.popup-fork { max-width: 30vw; max-height: 80vh; }
+  #popup-content.popup-plate { max-width: 80vw; max-height: 80vw; }
+  #popup-content.popup-pan { max-width: 70vw; max-height: 80vh; }
+  #popup-content.popup-glass { max-width: 50vw; max-height: 70vh; }
+
+  #clear-message {
+    padding: 30px 40px;
+    width: 80%;
+  }
+  #clear-message h1 { font-size: 2.5rem; }
+  #clear-message p { font-size: 1.2rem; }
+}

@@ -91,28 +91,40 @@ function setupCanvas() {
   canvas.width = popupContent.clientWidth;
   canvas.height = popupContent.clientHeight;
   
-  const pattern = ctx.createPattern(dirtImage, 'repeat');
-  const maskImg = new Image();
-  maskImg.src = `assets_v2/${activeData.type}.svg`;
+  // 1. 오염 레이어 이미지 로드 보장
+  const localDirtImage = new Image();
   
-  maskImg.onload = () => {
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.drawImage(maskImg, 0, 0, canvas.width, canvas.height);
+  // 3. 이미지 크기 강제 지정
+  localDirtImage.width = canvas.width;
+  localDirtImage.height = canvas.height;
+  localDirtImage.src = 'assets_v2/dirt.svg';
+  
+  localDirtImage.onload = () => {
+    const maskImg = new Image();
+    // 마스크 이미지에도 동일하게 크기 강제 지정
+    maskImg.width = canvas.width;
+    maskImg.height = canvas.height;
+    maskImg.src = `assets_v2/${activeData.type}.svg`;
     
-    ctx.globalCompositeOperation = 'source-in';
-    ctx.fillStyle = pattern;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    dirtyPixelsTotal = 0;
-    for (let i = 3; i < imageData.data.length; i += 4) {
-      if (imageData.data[i] > 10) dirtyPixelsTotal++;
-    }
-    
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = 60;
-    ctx.globalCompositeOperation = 'destination-out';
+    maskImg.onload = () => {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(maskImg, 0, 0, canvas.width, canvas.height);
+      
+      ctx.globalCompositeOperation = 'source-in';
+      // 2. 대체 색상 채우기(fillStyle, fillRect 등) 삭제 및 drawImage 로 교체
+      ctx.drawImage(localDirtImage, 0, 0, canvas.width, canvas.height);
+      
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      dirtyPixelsTotal = 0;
+      for (let i = 3; i < imageData.data.length; i += 4) {
+        if (imageData.data[i] > 10) dirtyPixelsTotal++;
+      }
+      
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 60;
+      ctx.globalCompositeOperation = 'destination-out';
+    };
   };
 }
 
