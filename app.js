@@ -162,8 +162,11 @@ function stopDrawing(e) {
   }
 }
 
+let lastBubble = 0;
 function spawnScrubBubble(pos) {
-  if (Math.random() > 0.4) return;
+  const now = Date.now();
+  if (now - lastBubble < 50 || Math.random() > 0.3) return;
+  lastBubble = now;
   const b = document.createElement('div');
   b.className = 'scrub-bubble';
   b.style.left = `${pos.x + (Math.random() * 40 - 20)}px`;
